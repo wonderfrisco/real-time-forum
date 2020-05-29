@@ -17,10 +17,11 @@ class CreateRepliesTable extends Migration
             $table->id();
             $table->text('body');
 
-            $table->integer('question_id')->unsigned();
+            
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('question_id')->refences('id')->on('questions')->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
